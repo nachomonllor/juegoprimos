@@ -27,6 +27,7 @@ export class PrimosComponent implements OnInit {
   limite:number = 30;
   reloj:number =25;
   nivel :number = 1;
+  puntos: number = 0;
 
   //para cargar a los numeros primos en una lista
   cribaDeEratostenes(n:number) {
@@ -78,7 +79,7 @@ export class PrimosComponent implements OnInit {
       this.totalPrimos = 0;
       //this.limite = 20;
       this.reloj =30;
-
+      this.puntos =0; 
       this.listaPrimos = new Array<number>();
       this.cribaDeEratostenes(this.limite);
       this.listaAleatorios = new Array<number>();
@@ -86,7 +87,7 @@ export class PrimosComponent implements OnInit {
      
  
       for(let i = 0; i < 25; i++) {
-           this.listaAleatorios.push(Math.floor(Math.random() * this.limite));
+           this.listaAleatorios.push(Math.floor(Math.random() * this.limite) + 1);
           // this.estadoBotones.push(this.listaAleatorios[i].toLocaleString());
           if(this.listaPrimos.indexOf(this.listaAleatorios[i])>=0){
             this.totalPrimos++;
@@ -112,6 +113,7 @@ export class PrimosComponent implements OnInit {
       if(this.reloj<=0){
         this.nivel = 1;
         this.limite = 20;
+        this.puntos = 0 ;
         clearInterval(this._timer);
         alert("Se te acabo el tiempo");
         this.inicializar();
@@ -125,6 +127,7 @@ export class PrimosComponent implements OnInit {
     if(this.listaPrimos.indexOf(this.posiciones[fila][columna]) >= 0) {
       this.estadoBotones[fila][columna] = "P"; 
       this.totalPrimos--;
+      this.puntos += 10;
       
       if(this.totalPrimos == 0) {
           this.subirDeNivel();
@@ -136,12 +139,7 @@ export class PrimosComponent implements OnInit {
       this.estadoBotones[fila][columna] = "X"; 
       this.reloj -= 3; //los errores cuestan tiempo
     }
-   
-
-
+    
   }
-
-
- 
 
 }
