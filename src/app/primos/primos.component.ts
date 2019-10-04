@@ -47,6 +47,12 @@ export class PrimosComponent implements OnInit {
                            [0,0,0,0,0],
                            [0,0,0,0,0],
                            [0,0,0,0,0]];
+  totalPrimos:number = 0;
+
+
+  ngOnInit() {
+
+  }
 
   constructor() 
   {
@@ -59,6 +65,9 @@ export class PrimosComponent implements OnInit {
      for(let i = 0; i < 25; i++) {
           this.listaAleatorios.push(Math.floor(Math.random() * 200));
          // this.estadoBotones.push(this.listaAleatorios[i].toLocaleString());
+         if(this.listaPrimos.indexOf(this.listaAleatorios[i])>=0){
+           this.totalPrimos++;
+         }
      }
  
      let indice = 0;
@@ -69,14 +78,17 @@ export class PrimosComponent implements OnInit {
            indice++;
         }
      }
-
+  
 
    } 
+
+   
 
   
   presion(fila:number,columna:number) {
     if(this.listaPrimos.indexOf(this.posiciones[fila][columna]) >= 0) {
       this.estadoBotones[fila][columna] = "P"; 
+      this.totalPrimos--;
     }
     else{
       this.estadoBotones[fila][columna] = "X"; 
@@ -84,8 +96,6 @@ export class PrimosComponent implements OnInit {
   }
 
 
-  ngOnInit() {
-
-  }
+ 
 
 }

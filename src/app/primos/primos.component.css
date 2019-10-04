@@ -34,6 +34,7 @@
 
 .casilla {
   height: 4rem;
-  margin: 0.3rem;
+  width:90px;
+  margin: 0.1rem;
   font-size: 2rem;
 }
