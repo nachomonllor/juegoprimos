@@ -56,7 +56,7 @@ export class PrimosComponent implements OnInit {
   
   
   subirDeNivel() {
-      this.limite += 15;
+      this.limite += 50;
       this.nivel++;
   }
 
@@ -76,7 +76,7 @@ export class PrimosComponent implements OnInit {
       clearInterval(this._timer);
       this._timer = setInterval(() => this.contador(), 1000);
       this.totalPrimos = 0;
-      this.limite = 50;
+      //this.limite = 20;
       this.reloj =30;
 
       this.listaPrimos = new Array<number>();
@@ -111,7 +111,7 @@ export class PrimosComponent implements OnInit {
       this.reloj--;
       if(this.reloj<=0){
         this.nivel = 1;
-        this.limite = 30;
+        this.limite = 20;
         clearInterval(this._timer);
         alert("Se te acabo el tiempo");
         this.inicializar();
@@ -134,7 +134,7 @@ export class PrimosComponent implements OnInit {
     }
     else{
       this.estadoBotones[fila][columna] = "X"; 
-      this.reloj -= 3;
+      this.reloj -= 3; //los errores cuestan tiempo
     }
    
 
