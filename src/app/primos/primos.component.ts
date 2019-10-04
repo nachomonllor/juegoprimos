@@ -79,7 +79,7 @@ export class PrimosComponent implements OnInit {
       this.totalPrimos = 0;
       //this.limite = 20;
       this.reloj =30;
-      this.puntos =0; 
+      //this.puntos =0; 
       this.listaPrimos = new Array<number>();
       this.cribaDeEratostenes(this.limite);
       this.listaAleatorios = new Array<number>();

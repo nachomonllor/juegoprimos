@@ -1,5 +1,7 @@
 
 <h1 class="mat-display-1"> Encontrar todos los numeros primos </h1>
+<br> 
+Los errores se penalizan con 3 segundos
 
 <div style="text-align: center">
   <button mat-raised-button (click)="presion(0,0)" class="casilla">{{estadoBotones[0][0]}}</button>
@@ -33,11 +35,12 @@
   <button mat-raised-button (click)="presion(4,4)" class="casilla">{{estadoBotones[4][4]}}</button>
 </div>
 <br>
-
-Los errores se penalizan con 3 segundos
-<br> 
+<div style="text-align: center">
 Te quedan {{totalPrimos}} numeros primos
 <br>
 Tiempo {{reloj}} Nivel {{nivel}}
 <br>
-Puntos: {{puntos}}
+  Puntos: {{puntos}}
+<div>
+<br>
+
