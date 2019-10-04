@@ -35,63 +35,53 @@ export class PrimosComponent implements OnInit {
   }
   
   listaAleatorios: Array<number>;
+  estadoBotones:string[][] = [ 
+      [" ", " ", " ", " ", " " ],
+      [" ", " ", " ", " ", " " ],
+      [" ", " ", " ", " ", " " ],
+      [" ", " ", " ", " ", " " ],
+      [" ", " ", " ", " ", " " ]
+  ];
+  posiciones:number[][] = [[0,0,0,0,0],
+                           [0,0,0,0,0],
+                           [0,0,0,0,0],
+                           [0,0,0,0,0],
+                           [0,0,0,0,0]];
+
   constructor() 
   {
      this.listaPrimos = new Array<number>();
      this.cribaDeEratostenes(250);
      this.listaAleatorios = new Array<number>();
+     //this.estadoBotones = new Array<string>();
+    
 
      for(let i = 0; i < 25; i++) {
           this.listaAleatorios.push(Math.floor(Math.random() * 200));
+         // this.estadoBotones.push(this.listaAleatorios[i].toLocaleString());
      }
-     this.estadoBoton0 = this.listaAleatorios[0].toLocaleString();
-     this.estadoBoton1 = this.listaAleatorios[1].toLocaleString();
-     this.estadoBoton2 = this.listaAleatorios[2].toLocaleString();
-     
-   }
+ 
+     let indice = 0;
+     for(let i =0; i < 5; i++) {
+        for(let j =0; j < 5; j++) {
+           this.posiciones[i][j] = this.listaAleatorios[indice]; 
+           this.estadoBotones[i][j] = this.listaAleatorios[indice].toLocaleString();
+           indice++;
+        }
+     }
 
-   estadoBoton0:string;
-   estadoBoton1:string;
-   estadoBoton2:string;
-   presionar0() {
-      //this.estadoBoton0 = this.listaAleatorios[0].toLocaleString();
-      if(this.listaPrimos.indexOf(this.listaAleatorios[0]) >=0){
-         // console.log("es primo");
-         this.estadoBoton0 ="P";
-      }
-      else{
-        //console.log("no es primo");
-        this.estadoBoton0 ="*";
-      }
-      
-   }
-   presionar1() {
-    //this.estadoBoton0 = this.listaAleatorios[0].toLocaleString();
-    if(this.listaPrimos.indexOf(this.listaAleatorios[1]) >=0){
-       // console.log("es primo");
-       this.estadoBoton1 ="P";
+
+   } 
+
+  
+  presion(fila:number,columna:number) {
+    if(this.listaPrimos.indexOf(this.posiciones[fila][columna]) >= 0) {
+      this.estadoBotones[fila][columna] = "P"; 
     }
     else{
-      //console.log("no es primo");
-      this.estadoBoton1 ="*";
+      this.estadoBotones[fila][columna] = "X"; 
     }
-    
- }
- 
- presionar2() {
-  //this.estadoBoton0 = this.listaAleatorios[0].toLocaleString();
-  if(this.listaPrimos.indexOf(this.listaAleatorios[2]) >=0){
-     // console.log("es primo");
-     this.estadoBoton2 ="P";
   }
-  else{
-    //console.log("no es primo");
-    this.estadoBoton2 ="*";
-  }
-  
-}
- 
-   
 
 
   ngOnInit() {
