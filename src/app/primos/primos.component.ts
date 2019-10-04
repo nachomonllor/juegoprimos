@@ -48,7 +48,7 @@ export class PrimosComponent implements OnInit {
                            [0,0,0,0,0],
                            [0,0,0,0,0]];
   totalPrimos:number = 0;
-
+  limite:number = 100;
 
   ngOnInit() {
 
@@ -57,13 +57,13 @@ export class PrimosComponent implements OnInit {
   constructor() 
   {
      this.listaPrimos = new Array<number>();
-     this.cribaDeEratostenes(250);
+     this.cribaDeEratostenes(this.limite);
      this.listaAleatorios = new Array<number>();
      //this.estadoBotones = new Array<string>();
     
 
      for(let i = 0; i < 25; i++) {
-          this.listaAleatorios.push(Math.floor(Math.random() * 200));
+          this.listaAleatorios.push(Math.floor(Math.random() * this.limite));
          // this.estadoBotones.push(this.listaAleatorios[i].toLocaleString());
          if(this.listaPrimos.indexOf(this.listaAleatorios[i])>=0){
            this.totalPrimos++;
