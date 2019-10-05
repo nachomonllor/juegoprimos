@@ -11,11 +11,11 @@ export class PrimosComponent implements OnInit {
   _timer:any;
   listaAleatorios: Array<number>;
   estadoBotones:string[][] = [ 
-      [" ", " ", " ", " ", " " ],
-      [" ", " ", " ", " ", " " ],
-      [" ", " ", " ", " ", " " ],
-      [" ", " ", " ", " ", " " ],
-      [" ", " ", " ", " ", " " ]
+      ["white", "white", "white", "white", "white" ],
+      ["white", "white", "white", "white", "white" ],
+      ["white", "white", "white", "white", "white" ],
+      ["white", "white", "white", "white", "white" ],
+      ["white", "white", "white", "white", "white" ],
   ];
   posiciones:number[][] = [[0,0,0,0,0],
                            [0,0,0,0,0],
@@ -25,7 +25,7 @@ export class PrimosComponent implements OnInit {
 
   totalPrimos:number = 0;
   limite:number = 30;
-  reloj:number =25;
+  reloj:number = 25;
   nivel :number = 1;
   puntos: number = 0;
 
@@ -59,19 +59,34 @@ export class PrimosComponent implements OnInit {
   subirDeNivel() {
       this.limite += 50;
       this.nivel++;
+      clearInterval(this._timer);
+      this._timer = setInterval(() => this.contador(), 1000);
+      this.resetearColorBotones();
   }
 
   ngOnInit() {
-
+    clearInterval(this._timer);
+    this._timer = setInterval(() => this.contador(), 1000);
+    this.resetearColorBotones();
   }
 
   constructor() 
   {
-     
-     this.inicializar();
+    clearInterval(this._timer);
+    this._timer = setInterval(() => this.contador(), 1000);
+    this.resetearColorBotones();
+    this.inicializar();
      
 
    } 
+
+   resetearColorBotones() {
+    for(let i =0; i<5; i++) {
+      for(let j =0; j<5; j++) {
+        this.estadoBotones[i][j] = "white";
+      }
+    }
+   }
    
     inicializar() {
       clearInterval(this._timer);
@@ -93,13 +108,15 @@ export class PrimosComponent implements OnInit {
             this.totalPrimos++;
           }
       }
-  
+      
+      this.resetearColorBotones();
+
       let indice = 0;
       for(let i =0; i < 5; i++) {
          for(let j =0; j < 5; j++) {
             this.posiciones[i][j] = this.listaAleatorios[indice]; 
-            this.estadoBotones[i][j] =" ";
-            this.estadoBotones[i][j] = this.listaAleatorios[indice].toLocaleString();
+            
+            //this.estadoBotones[i][j] = this.listaAleatorios[indice].toLocaleString();
             indice++;
          }
       }
@@ -115,9 +132,12 @@ export class PrimosComponent implements OnInit {
         this.nivel = 1;
         this.limite = 20;
         this.puntos = 0 ;
+
         clearInterval(this._timer);
+        this.resetearColorBotones();
         alert("Se te acabo el tiempo");
         this.inicializar();
+       
       }
 
   }
@@ -131,6 +151,9 @@ export class PrimosComponent implements OnInit {
       this.puntos += 10;
       
       if(this.totalPrimos == 0) {
+          
+          clearInterval(this._timer);
+          this.resetearColorBotones();
           this.subirDeNivel();
           this.inicializar();
       }
