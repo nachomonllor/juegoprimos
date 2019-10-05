@@ -38,3 +38,14 @@
   margin: 0.1rem;
   font-size: 2rem;
 }
+.texto_puntos {
+  color: green;
+  font-style: italic;
+  font-size: 20px;
+}
+
+.myClass{
+  color : red;
+  background-color: green;
+}
+

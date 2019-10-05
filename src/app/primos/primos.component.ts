@@ -125,7 +125,7 @@ export class PrimosComponent implements OnInit {
   
   presion(fila:number,columna:number) {
     if(this.listaPrimos.indexOf(this.posiciones[fila][columna]) >= 0) {
-      this.estadoBotones[fila][columna] = "P"; 
+      this.estadoBotones[fila][columna] = "green"; 
       this.totalPrimos--;
       this.puntos += 10;
       
@@ -136,10 +136,16 @@ export class PrimosComponent implements OnInit {
 
     }
     else{
-      this.estadoBotones[fila][columna] = "X"; 
+      this.estadoBotones[fila][columna] = "red"; 
       this.reloj -= 3; //los errores cuestan tiempo
     }
-    
+    //this.isClicked = true;
   }
 
+   //isClicked = false;
+   
+   
+  
+
+  
 }

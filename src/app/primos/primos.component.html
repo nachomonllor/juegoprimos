@@ -1,10 +1,10 @@
 
-<h1 class="mat-display-1"> Encontrar todos los numeros primos </h1>
+<h1 class="mat-display-1" class ="texto_puntos"> Encontrar todos los numeros primos </h1>
+    Los errores se penalizan con 3 segundos
 <br> 
-Los errores se penalizan con 3 segundos
 
 <div style="text-align: center">
-  <button mat-raised-button (click)="presion(0,0)" class="casilla">{{estadoBotones[0][0]}}</button>
+  <button mat-raised-button (click)="presion(0,0)"   >{{estadoBotones[0][0]}}</button>
   <button mat-raised-button (click)="presion(0,1)" class="casilla">{{estadoBotones[0][1]}}</button>
   <button mat-raised-button (click)="presion(0,2)" class="casilla">{{estadoBotones[0][2]}}</button>
   <button mat-raised-button (click)="presion(0,3)" class="casilla">{{estadoBotones[0][3]}}</button>
@@ -35,12 +35,31 @@ Los errores se penalizan con 3 segundos
   <button mat-raised-button (click)="presion(4,4)" class="casilla">{{estadoBotones[4][4]}}</button>
 </div>
 <br>
-<div style="text-align: center">
+<div style="text-align: center" class ="texto_puntos">
 Te quedan {{totalPrimos}} numeros primos
 <br>
-Tiempo {{reloj}} Nivel {{nivel}}
+Tiempo {{reloj}} - Nivel {{nivel}}
 <br>
   Puntos: {{puntos}}
 <div>
 <br>
+
+<td>
+  <button mat-raised-button color="primary" (click)="presion(0,0)" [class.myClass]="isClicked">
+      prueba
+  </button>
+</td>
+
+<br>
+<td>
+<button mat-raised-button color="primary" (click)="presion(0,0)" [ngStyle]="{'color': estadoBotones[0][0] }">
+  un boton 
+</button>
+</td>
+
+
+
+
+
+
 
