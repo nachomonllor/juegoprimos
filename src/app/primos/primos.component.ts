@@ -98,6 +98,7 @@ export class PrimosComponent implements OnInit {
       for(let i =0; i < 5; i++) {
          for(let j =0; j < 5; j++) {
             this.posiciones[i][j] = this.listaAleatorios[indice]; 
+            this.estadoBotones[i][j] =" ";
             this.estadoBotones[i][j] = this.listaAleatorios[indice].toLocaleString();
             indice++;
          }
@@ -139,13 +140,8 @@ export class PrimosComponent implements OnInit {
       this.estadoBotones[fila][columna] = "red"; 
       this.reloj -= 3; //los errores cuestan tiempo
     }
-    //this.isClicked = true;
+    
   }
 
-   //isClicked = false;
-   
-   
-  
 
-  
 }
