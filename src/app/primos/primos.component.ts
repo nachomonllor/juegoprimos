@@ -28,6 +28,7 @@ export class PrimosComponent implements OnInit {
   reloj:number = 25;
   nivel :number = 1;
   puntos: number = 0;
+  maximo_puntaje:number = 0;
 
   //para cargar a los numeros primos en una lista
   cribaDeEratostenes(n:number) {
@@ -62,6 +63,9 @@ export class PrimosComponent implements OnInit {
       clearInterval(this._timer);
       this._timer = setInterval(() => this.contador(), 1000);
       this.resetearColorBotones();
+      if(this.puntos > this.maximo_puntaje) {
+        this.maximo_puntaje = this.puntos;
+      }
   }
 
   ngOnInit() {
@@ -131,6 +135,11 @@ export class PrimosComponent implements OnInit {
       if(this.reloj<=0){
         this.nivel = 1;
         this.limite = 20;
+
+        if(this.puntos > this.maximo_puntaje) {
+           this.maximo_puntaje = this.puntos;
+        }
+
         this.puntos = 0 ;
 
         clearInterval(this._timer);
@@ -149,6 +158,7 @@ export class PrimosComponent implements OnInit {
       this.estadoBotones[fila][columna] = "green"; 
       this.totalPrimos--;
       this.puntos += 10;
+      
       
       if(this.totalPrimos == 0) {
           
